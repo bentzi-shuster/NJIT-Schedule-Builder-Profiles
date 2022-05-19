@@ -48,7 +48,7 @@ function copy(text) {
 const save = document.getElementById("save");
 document.getElementById("name").addEventListener("keyup", function (e) {
   if (e.key == "Enter") {
-    if(/[^A-Za-z0-9_\-\s]/g.test(document.getElementById("name").value)==true){
+    if(/[^A-Za-z0-9\-\s]/g.test(document.getElementById("name").value)==true){
       chrome.runtime.sendMessage({
         from: "popup",
         subject: "buttonClicked",
@@ -67,7 +67,7 @@ document.getElementById("name").addEventListener("keyup", function (e) {
   }
 });
 save.addEventListener("click", () => {
-  if(/[^A-Za-z0-9_\-\s]/g.test(document.getElementById("name").value)==true){
+  if(/[^A-Za-z0-9\-\s]/g.test(document.getElementById("name").value)==true){
   chrome.runtime.sendMessage({
     from: "popup",
     subject: "buttonClicked",
@@ -197,9 +197,7 @@ chrome.runtime.sendMessage({
         let planName = e.target.id;
         planName = planName.split("_")[1];
         if (confirm("Do you want to remove " + planName +" ?")  == true) {
-          document
-            .getElementsByClassName(planName)[0]
-            .parentElement.parentElement.remove();
+          document.getElementsByClassName(planName)[0].parentElement.parentElement.remove();
           chrome.storage.local.remove(planName, function () {});
         }
         chrome.storage.local.get(null, function (result) {

@@ -4,7 +4,7 @@ window.addEventListener("keydown", (event) => {
     event.preventDefault();
     let planName = prompt("Enter a plan name");
     if (planName) {
-      if (/[^A-Za-z0-9_\-\s]/g.test(planName)==true) {
+      if (/[^A-Za-z0-9\-\s]/g.test(planName)==true) {
         chrome.runtime.sendMessage({
           from: "content",
           subject: "giveClasses",
